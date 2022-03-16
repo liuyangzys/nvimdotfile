@@ -77,7 +77,8 @@ function pbind.map_args(cmd_string)
 	return ro:map_args(cmd_string)
 end
 
-function pbind.nvim_load_mapping(mapping)
+-- load global keymap
+function pbind.nvim_load_gmapping(mapping)
 	for key, value in pairs(mapping) do
 		local mode, keymap = key:match("([^|]*)|?(.*)")
 		if type(value) == "table" then
@@ -88,4 +89,15 @@ function pbind.nvim_load_mapping(mapping)
 	end
 end
 
+-- load buffer keymap
+function pbind.nvim_load_bmapping(mapping, buffnr)
+	for key, value in pairs(mapping) do
+		local mode, keymap = key:match("([^|]*)|?(.*)")
+		if type(value) == "table" then
+			local rhs = value.cmd
+			local options = value.options
+			vim.api.nvim_buf_set_keymap(buffnr, mode, keymap, rhs, options)
+		end
+	end
+end
 return pbind
