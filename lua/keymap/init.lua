@@ -123,7 +123,6 @@ local plug_map = {
   -- Plugin Tabout
   ["i|<A-l>"] = map_cmd([[<Plug>(TaboutMulti)]]):with_silent(),
   ["i|<A-h>"] = map_cmd([[<Plug>(TaboutBackMulti)]]):with_silent(),
-
   -- formatter.nvim
   ["n|<leader>fm"] = map_cr("Format"):with_noremap():with_silent()
 }
@@ -140,7 +139,7 @@ local lsp_map = {
   ["v|<leader>ca"] = map_cu("Lspsaga range_code_action"):with_noremap():with_silent(),
   ["n|<leader>gr"] = map_cr("lua vim.lsp.buf.references()"):with_noremap():with_silent(),
   ["n|<leader>rn"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
-  ["n|<leader>fs"] = map_cu("Telescope lsp_workspace_symbols"):with_noremap():with_silent(),
+  ["n|<leader>fs"] = map_cu("Telescope lsp_workspace_symbols"):with_noremap():with_silent()
   -- ["n|<leader>fm"] = map_cr("lua vim.lsp.buf.formatting()"):with_noremap():with_silent()
 }
 

@@ -8,9 +8,9 @@ function config.nvim_lsp_installer()
   require("modules.completion.lsp").lsp_installer_config()
 end
 
--- function config.lightbulb()
---   vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
--- end
+function config.lightbulb()
+  vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
+end
 
 function config.lspsaga()
   require("lspsaga").init_lsp_saga(

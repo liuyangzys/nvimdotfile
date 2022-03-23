@@ -35,7 +35,7 @@ tools["nvim-telescope/telescope-fzf-native.nvim"] = {
 -- }
 tools["folke/which-key.nvim"] = {
   opt = true,
-  keys = " ",
+  keys = "<leader>",
   config = function()
     require("which-key").setup({})
   end
