@@ -143,6 +143,16 @@ local lsp_map = {
   -- ["n|<leader>fm"] = map_cr("lua vim.lsp.buf.formatting()"):with_noremap():with_silent()
 }
 
+local gitsigns_map = {
+  ["n|[c"] = map_cu("lua require('gitsigns').prev_hunk()"):with_noremap():with_silent(),
+  ["n|]c"] = map_cu("lua require('gitsigns').next_hunk()"):with_noremap():with_silent(),
+  ["n|<leader>hs"] = map_cu("lua require('gitsigns').stage_hunk()"):with_noremap():with_silent(),
+  ["n|<leader>hr"] = map_cu("lua require('gitsigns').reset_hunk()"):with_noremap():with_silent(),
+  ["n|<leader>hR"] = map_cu("lua require('gitsigns').reset_buffer()"):with_noremap():with_silent(),
+  ["n|<leader>hp"] = map_cu("lua require('gitsigns').preview_hunk()"):with_noremap():with_silent(),
+  ["n|<leader>hu"] = map_cu("lua require('gitsigns').undo_stage_hunk()"):with_noremap():with_silent()
+}
+
 -- map leader to space
 local leader_map = function()
   vim.g.mapleader = " "
@@ -158,6 +168,10 @@ end
 
 function M.lsp_on_attach(client, buffnr)
   bind.nvim_load_bmapping(lsp_map, buffnr)
+end
+
+function M.gitsigns_on_attach(buffnr)
+  bind.nvim_load_bmapping(gitsigns_map, buffnr)
 end
 
 return M

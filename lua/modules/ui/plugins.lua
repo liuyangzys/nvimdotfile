@@ -18,14 +18,14 @@ ui["arkav/lualine-lsp-progress"] = {opt = true, after = "nvim-gps"}
 -- ui["glepnir/dashboard-nvim"] = { opt = true, event = "BufWinEnter" }
 ui["kyazdani42/nvim-tree.lua"] = {
   opt = true,
-  event = "BufRead",
+  cmd = {"NvimTreeToggle", "NvimTreeFindFile", "NvimTreeRefresh"},
   config = conf.nvim_tree
 }
 ui["lewis6991/gitsigns.nvim"] = {
   opt = true,
   event = {"BufRead", "BufNewFile"},
   config = conf.gitsigns,
-  requires = {"nvim-lua/plenary.nvim", opt = true}
+  requires = {"nvim-lua/plenary.nvim"}
 }
 ui["lukas-reineke/indent-blankline.nvim"] = {
   opt = true,
