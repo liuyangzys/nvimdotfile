@@ -89,10 +89,10 @@ local plug_map = {
   ["n|ga"] = map_cmd("v:lua.enhance_align('nga')"):with_expr(),
   ["x|ga"] = map_cmd("v:lua.enhance_align('xga')"):with_expr(),
   -- Plugin split-term
-  ["n|<F5>"] = map_cr("VTerm"):with_noremap():with_silent(),
+  -- ["n|<F5>"] = map_cr("VTerm"):with_noremap():with_silent(),
   ["n|<C-w>t"] = map_cr("VTerm"):with_noremap():with_silent(),
   -- Plugin MarkdownPreview
-  ["n|<F12>"] = map_cr("MarkdownPreviewToggle"):with_noremap():with_silent(),
+  -- ["n|<F12>"] = map_cr("MarkdownPreviewToggle"):with_noremap():with_silent(),
   -- Plugin auto_session
   ["n|<leader>ss"] = map_cu("SaveSession"):with_noremap():with_silent(),
   ["n|<leader>sr"] = map_cu("RestoreSession"):with_noremap():with_silent(),
