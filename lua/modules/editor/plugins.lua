@@ -118,6 +118,7 @@ editor["rmagatti/auto-session"] = {
   config = conf.auto_session
 }
 editor["jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
+editor["puremourning/vimspector"] = {opt = true, keys = "<F5>"}
 -- editor["rcarriga/nvim-dap-ui"] = {
 -- 	opt = false,
 -- 	config = conf.dapui,
@@ -132,6 +133,11 @@ editor["jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
 -- 	},
 -- }
 editor["tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
+editor["TimUntersberger/neogit"] = {
+  opt = true,
+  cmd = {"Neogit"},
+  requires = {"nvim-lua/plenary.nvim"}
+}
 editor["famiu/bufdelete.nvim"] = {
   opt = true,
   cmd = {"Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!"}
