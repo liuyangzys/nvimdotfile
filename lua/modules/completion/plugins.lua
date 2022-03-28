@@ -72,6 +72,7 @@ completion["L3MON4D3/LuaSnip"] = {
 
 completion["danymat/neogen"] = {
   opt = true,
+  cmd = "Neogen",
   config = conf.neogen
 }
 
