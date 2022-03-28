@@ -75,7 +75,7 @@ function config.catppuccin()
         bufferline = true,
         markdown = true,
         -- lightspeed = true,
-        ts_rainbow = true,
+        ts_rainbow = true
         -- hop = true
       }
     }
@@ -203,11 +203,11 @@ end
 function config.nvim_tree()
   require("nvim-tree").setup(
     {
+      auto_reload_on_write = true,
       disable_netrw = true,
       hijack_netrw = true,
       open_on_setup = false,
       ignore_ft_on_setup = {},
-      auto_close = true,
       open_on_tab = false,
       hijack_cursor = true,
       update_cwd = false,
