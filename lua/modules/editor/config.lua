@@ -225,6 +225,11 @@ function config.auto_session()
   require("auto-session").setup(opts)
 end
 
+function config.neogit()
+  local neogit = require("neogit")
+  neogit.setup {}
+end
+
 -- function config.toggleterm()
 -- 	require("toggleterm").setup({
 -- 		-- size can be a number or function which is passed the current terminal

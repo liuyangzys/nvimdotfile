@@ -136,6 +136,7 @@ editor["tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
 editor["TimUntersberger/neogit"] = {
   opt = true,
   cmd = {"Neogit"},
+  config = conf.neogit,
   requires = {"nvim-lua/plenary.nvim"}
 }
 editor["famiu/bufdelete.nvim"] = {
