@@ -27,18 +27,6 @@ local plug_map = {
   ["n|<A-7>"] = map_cr("BufferLineGoToBuffer 7"):with_noremap():with_silent(),
   ["n|<A-8>"] = map_cr("BufferLineGoToBuffer 8"):with_noremap():with_silent(),
   ["n|<A-9>"] = map_cr("BufferLineGoToBuffer 9"):with_noremap():with_silent(),
-  -- Packer
-  -- ["n|<leader>ps"] = map_cr("PackerSync"):with_silent():with_noremap():with_nowait(),
-  -- ["n|<leader>pu"] = map_cr("PackerUpdate"):with_silent():with_noremap():with_nowait(),
-  -- ["n|<leader>pi"] = map_cr("PackerInstall"):with_silent():with_noremap():with_nowait(),
-  -- ["n|<leader>pc"] = map_cr("PackerClean"):with_silent():with_noremap():with_nowait(),
-  -- Lsp mapp work when insertenter and lsp start
-
-  -- FTerm
-  -- ["n|<A-d>"] = map_cu('lua require("FTerm").toggle()'):with_noremap():with_silent(),
-  -- ["t|<A-d>"] = map_cu([[<C-\><C-n><CMD>lua require("FTerm").toggle()]]):with_noremap():with_silent(),
-  -- ["t|<A-S-d>"] = map_cu([[<C-\><C-n><CMD>lua require("FTerm").exit()]]):with_noremap():with_silent(),
-  -- ["n|<Leader>g"] = map_cu("lua require('FTerm').run('gitui')"):with_noremap():with_silent(),
   -- fugitive
   -- ["n|<Leader>G"] = map_cu("Git"):with_noremap():with_silent(),
   -- ["n|gps"] = map_cr("G push"):with_noremap():with_silent(),
@@ -51,40 +39,24 @@ local plug_map = {
   -- ["n|<leader>cq"] = map_cr("TroubleToggle quickfix"):with_noremap():with_silent(),
   -- ["n|<leader>cl"] = map_cr("TroubleToggle loclist"):with_noremap():with_silent(),
   -- Plugin nvim-tree
-  ["n|<F8>"] = map_cr("NvimTreeToggle"):with_noremap():with_silent(),
+  ["n|<Leader>nt"] = map_cr("NvimTreeToggle"):with_noremap():with_silent(),
   ["n|<Leader>nf"] = map_cr("NvimTreeFindFile"):with_noremap():with_silent(),
   ["n|<Leader>nr"] = map_cr("NvimTreeRefresh"):with_noremap():with_silent(),
   -- Plugin Aerial
   ["n|<A-t>"] = map_cr("AerialToggle! right"):with_noremap():with_silent(),
-  -- Plugin Minimap
-  -- ["n|<A-n>"] = map_cr("MinimapToggle"):with_noremap():with_silent(),
-  -- ["n|<A-r>"] = map_cr("MinimapRefresh"):with_noremap():with_silent(),
   -- Plugin Telescope
   -- ["n|<Leader>fp"] = map_cu("lua require('telescope').extensions.project.project{}"):with_noremap():with_silent(),
   -- ["n|<Leader>fr"] = map_cu("lua require('telescope').extensions.frecency.frecency{}"):with_noremap():with_silent(),
-  -- ["n|<Leader>fe"] = map_cu("DashboardFindHistory"):with_noremap():with_silent(),
   ["n|<Leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent(),
   ["n|<Leader>fw"] = map_cu("Telescope live_grep"):with_noremap():with_silent(),
   ["n|<Leader>fs"] = map_cu("Telescope lsp_workspace_symbols"):with_noremap():with_silent(),
-  -- ["n|<Leader>fw"] = map_cu("DashboardFindWord"):with_noremap():with_silent(),
   -- ["n|<Leader>fb"] = map_cu("Telescope file_browser"):with_noremap():with_silent(),
   -- ["n|<Leader>fg"] = map_cu("Telescope git_files"):with_noremap():with_silent(),
   -- ["n|<Leader>fz"] = map_cu("Telescope zoxide list"):with_noremap():with_silent(),
   -- Plugin accelerate-jk
   ["n|j"] = map_cmd("v:lua.enhance_jk_move('j')"):with_silent():with_expr(),
   ["n|k"] = map_cmd("v:lua.enhance_jk_move('k')"):with_silent():with_expr(),
-  -- Plugin vim-eft
-  -- ["n|f"] = map_cmd("v:lua.enhance_ft_move('f')"):with_expr(),
-  -- ["n|F"] = map_cmd("v:lua.enhance_ft_move('F')"):with_expr(),
-  -- ["n|t"] = map_cmd("v:lua.enhance_ft_move('t')"):with_expr(),
-  -- ["n|T"] = map_cmd("v:lua.enhanue_ft_move('T')"):with_expr(),
-  -- ["n|;"] = map_cmd("v:lua.enhance_ft_move(';')"):with_expr(),
-  -- Plugin Hop
-  -- ["n|<leader>w"] = map_cu("HopWord"):with_noremap(),
-  -- ["n|<leader>j"] = map_cu("HopLine"):with_noremap(),
-  -- ["n|<leader>k"] = map_cu("HopLine"):with_noremap(),
-  -- ["n|<leader>c"] = map_cu("HopChar1"):with_noremap(),
-  -- ["n|<leader>cc"] = map_cu("HopChar2"):with_noremap(),
+
   -- Plugin EasyAlign
   ["n|ga"] = map_cmd("v:lua.enhance_align('nga')"):with_expr(),
   ["x|ga"] = map_cmd("v:lua.enhance_align('xga')"):with_expr(),
@@ -143,6 +115,23 @@ local lsp_map = {
   -- ["n|<leader>fm"] = map_cr("lua vim.lsp.buf.formatting()"):with_noremap():with_silent()
 }
 
+local dap_map = {
+  -- vscode like debug keymaps
+  ["n|<F5>"] = map_cr("lua require('dap').continue()"):with_noremap():with_silent(),
+  ["n|<S-F5>"] = map_cr("lua require('dap').terminate()"):with_noremap():with_silent(),
+  ["n|<F6>"] = map_cr("lua require('dap').pause()"):with_noremap():with_silent(),
+  ["n|<F9>"] = map_cr("lua require('dap').toggle_breakpoint()"):with_noremap():with_silent(),
+  ["n|<F10>"] = map_cr("lua require('dap').step_over()"):with_noremap():with_silent(),
+  ["n|<F11>"] = map_cr("lua require('dap').step_into()"):with_noremap():with_silent(),
+  ["n|<S-F11>"] = map_cr("lua require('dap').step_out()"):with_noremap():with_silent(),
+
+  ["n|<leader>dd"] = map_cr("lua require('dap').terminate() require('dapui').close()"):with_noremap():with_silent(),
+  ["n|<leader>db"] = map_cr("lua require('dap').toggle_breakpoint()"):with_noremap():with_silent(),
+  ["n|<leader>dB"] = map_cr("lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))"):with_noremap():with_silent(),
+  ["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap():with_silent(),
+  ["n|<leader>dv"] = map_cr("lua require('dapui').eval()"):with_noremap():with_silent()
+}
+
 local gitsigns_map = {
   ["n|[c"] = map_cu("lua require('gitsigns').prev_hunk()"):with_noremap():with_silent(),
   ["n|]c"] = map_cu("lua require('gitsigns').next_hunk()"):with_noremap():with_silent(),
@@ -168,6 +157,10 @@ end
 
 function M.lsp_on_attach(client, buffnr)
   bind.nvim_load_bmapping(lsp_map, buffnr)
+end
+
+function M.dap_on_attach()
+  bind.nvim_load_gmapping(dap_map)
 end
 
 function M.gitsigns_on_attach(buffnr)

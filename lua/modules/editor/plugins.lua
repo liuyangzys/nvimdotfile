@@ -118,20 +118,15 @@ editor["rmagatti/auto-session"] = {
   config = conf.auto_session
 }
 editor["jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
-editor["puremourning/vimspector"] = {opt = true, keys = "<F5>"}
--- editor["rcarriga/nvim-dap-ui"] = {
--- 	opt = false,
--- 	config = conf.dapui,
--- 	requires = {
--- 		{ "mfussenegger/nvim-dap", config = conf.dap },
--- 		{
--- 			"Pocco81/DAPInstall.nvim",
--- 			opt = true,
--- 			cmd = { "DIInstall", "DIUninstall", "DIList" },
--- 			config = conf.dapinstall,
--- 		},
--- 	},
--- }
+-- editor["puremourning/vimspector"] = {opt = true, keys = "<F5>"}
+editor["rcarriga/nvim-dap-ui"] = {
+  opt = true,
+  config = conf.dapui,
+  keys = "<F5>",
+  requires = {
+    {"mfussenegger/nvim-dap", config = conf.dap}
+  }
+}
 editor["tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
 editor["TimUntersberger/neogit"] = {
   opt = true,
