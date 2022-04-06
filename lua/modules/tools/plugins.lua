@@ -19,10 +19,10 @@ tools["nvim-telescope/telescope-fzf-native.nvim"] = {
   after = "telescope.nvim"
 }
 
--- tools["skywind3000/asyncrun"] = {
---   opt = true,
---   cmd = {"AsyncRun", "AsyncStop"}
--- }
+tools["skywind3000/asyncrun.vim"] = {
+  opt = true,
+  cmd = {"AsyncRun", "AsyncStop"}
+}
 
 -- tools["nvim-telescope/telescope-project.nvim"] = {
 -- 	opt = true,
