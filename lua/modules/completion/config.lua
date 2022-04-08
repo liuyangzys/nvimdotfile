@@ -12,6 +12,10 @@ function config.lightbulb()
   vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
 end
 
+function config.lsp_signature()
+  require("lsp_signature").setup({})
+end
+
 function config.lspsaga()
   require("lspsaga").init_lsp_saga(
     {
