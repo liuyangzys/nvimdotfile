@@ -240,11 +240,13 @@ function config.nvim_tree()
   )
 end
 
-function config.nvim_bufferline()
+function config.bufferline_nvim()
   require("bufferline").setup(
     {
       options = {
-        number = "none",
+        numbers = function(opts)
+          return string.format("%s·%s", opts.raise(opts.id), opts.lower(opts.ordinal))
+        end,
         modified_icon = "✥",
         buffer_close_icon = "",
         left_trunc_marker = "",
@@ -262,7 +264,7 @@ function config.nvim_bufferline()
           {
             filetype = "NvimTree",
             text = "File Explorer",
-            text_align = "center",
+            text_align = "left",
             padding = 1
           }
         }
