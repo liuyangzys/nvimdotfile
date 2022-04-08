@@ -44,6 +44,14 @@ ui["petertriho/nvim-scrollbar"] = {
     require("scrollbar").setup()
   end
 }
+ui["beauwilliams/focus.nvim"] = {
+  opt = true,
+  cmd = {"FocusToggle","FocusSplitNicely", "FocusSplitCycle"},
+  module = "focus",
+  config = function()
+    require("focus").setup()
+  end
+}
 -- ui["wfxr/minimap.vim"] = {
 -- 	opt = true,
 -- 	event = "BufRead",
