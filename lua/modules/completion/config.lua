@@ -343,6 +343,7 @@ function config.luasnip()
 end
 
 function config.neogen()
+  vim.cmd([[packadd LuaSnip]])
   require("neogen").setup(
     {
       snippet_engine = "luasnip"
