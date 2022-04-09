@@ -1,18 +1,22 @@
 local editor = {}
-local conf = require("modules.editor.config")
+-- local conf = require("modules.editor.config")
 
 editor["junegunn/vim-easy-align"] = {opt = true, event = "BufReadPost", cmd = "EasyAlign"}
 
 editor["mhartington/formatter.nvim"] = {
   opt = true,
   cmd = "Format",
-  config = conf.formatter
+  config = function()
+    require("modules.editor.config.formatter")
+  end
 }
 
 editor["itchyny/vim-cursorword"] = {
   opt = true,
   event = {"BufReadPre", "BufNewFile"},
-  config = conf.vim_cursorwod
+  config = function()
+    require("modules.editor.config.vim-cursorwod")
+  end
 }
 editor["terrortylor/nvim-comment"] = {
   opt = false,
@@ -30,7 +34,9 @@ editor["nvim-treesitter/nvim-treesitter"] = {
   opt = true,
   run = ":TSUpdate",
   event = "BufRead",
-  config = conf.nvim_treesitter
+  config = function()
+    require("modules.editor.config.nvim-treesitter")
+  end
 }
 editor["nvim-treesitter/nvim-treesitter-textobjects"] = {
   opt = true,
@@ -56,44 +62,35 @@ editor["mfussenegger/nvim-ts-hint-textobject"] = {
 editor["SmiteshP/nvim-gps"] = {
   opt = true,
   after = "nvim-treesitter",
-  config = conf.nvim_gps
+  config = function()
+    require("modules.editor.config.nvim-gps")
+  end
 }
 editor["windwp/nvim-ts-autotag"] = {
   opt = true,
   ft = {"html", "xml"},
-  config = conf.autotag
+  config = function()
+    require("modules.editor.config.nvim-ts-autotag")
+  end
 }
 editor["andymass/vim-matchup"] = {
   opt = true,
   after = "nvim-treesitter",
-  config = conf.matchup
+  config = function()
+    vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
+  end
 }
 editor["rhysd/accelerated-jk"] = {opt = true, event = "BufReadPost"}
 editor["ggandor/lightspeed.nvim"] = {
   opt = true,
   event = "BufReadPost"
 }
-
--- editor["phaazon/hop.nvim"] = {
---   opt = true,
---   branch = "v1",
---   cmd = {
---     "HopLine",
---     "HopLineStart",
---     "HopWord",
---     "HopPattern",
---     "HopChar1",
---     "HopChar2"
---   },
---   config = function()
---     require("hop").setup({keys = "etovxqpdygfblzhckisuran"})
---   end
--- }
-
 editor["karb94/neoscroll.nvim"] = {
   opt = true,
   event = "WinScrolled",
-  config = conf.neoscroll
+  config = function()
+    require("modules.editor.config.neoscroll")
+  end
 }
 editor["vimlab/split-term.vim"] = {opt = true, cmd = {"Term", "VTerm"}}
 -- editor["akinsho/nvim-toggleterm.lua"] = {
@@ -105,28 +102,40 @@ editor["vimlab/split-term.vim"] = {opt = true, cmd = {"Term", "VTerm"}}
 editor["norcalli/nvim-colorizer.lua"] = {
   opt = true,
   event = "BufRead",
-  config = conf.nvim_colorizer
+  config = function()
+    require("modules.editor.config.nvim-colorizer")
+  end
 }
 editor["rmagatti/auto-session"] = {
   opt = true,
   cmd = {"SaveSession", "RestoreSession", "DeleteSession"},
-  config = conf.auto_session
+  config = function()
+    require("modules.editor.config.auto-session")
+  end
 }
 editor["jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
--- editor["puremourning/vimspector"] = {opt = true, keys = "<F5>"}
 editor["rcarriga/nvim-dap-ui"] = {
   opt = true,
-  config = conf.dapui,
+  config = function()
+    require("modules.editor.config.nvim-dap-ui")
+  end,
   keys = "<F5>",
   requires = {
-    {"mfussenegger/nvim-dap", config = conf.dap}
+    {
+      "mfussenegger/nvim-dap",
+      config = function()
+        require("modules.editor.config.nvim-dap")
+      end
+    }
   }
 }
 editor["tpope/vim-fugitive"] = {opt = true, cmd = {"Git", "G"}}
 editor["TimUntersberger/neogit"] = {
   opt = true,
   cmd = {"Neogit"},
-  config = conf.neogit,
+  config = function()
+    require("modules.editor.config.neogit")
+  end,
   requires = {"nvim-lua/plenary.nvim"}
 }
 editor["famiu/bufdelete.nvim"] = {
@@ -136,14 +145,18 @@ editor["famiu/bufdelete.nvim"] = {
 editor["edluffy/specs.nvim"] = {
   opt = true,
   event = "CursorMoved",
-  config = conf.specs
+  config = function()
+    require("modules.editor.config.specs")
+  end,
 }
 editor["abecodes/tabout.nvim"] = {
   opt = true,
   event = "InsertEnter",
   wants = "nvim-treesitter",
   after = "nvim-cmp",
-  config = conf.tabout
+  config = function()
+    require("modules.editor.config.tabout")
+  end,
 }
 
 return editor

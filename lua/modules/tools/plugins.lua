@@ -1,18 +1,22 @@
 local tools = {}
-local conf = require("modules.tools.config")
 
 tools["RishabhRD/popfix"] = {opt = false}
+
 tools["nvim-lua/plenary.nvim"] = {opt = false}
+
 tools["nvim-telescope/telescope.nvim"] = {
   opt = true,
   module = "telescope",
   cmd = "Telescope",
-  config = conf.telescope,
+  config = function ()
+    require('modules.tools.config.telescope')
+  end,
   requires = {
     {"nvim-lua/plenary.nvim", opt = false},
     {"nvim-lua/popup.nvim", opt = true}
   }
 }
+
 tools["nvim-telescope/telescope-fzf-native.nvim"] = {
   opt = true,
   run = "make",
@@ -49,17 +53,23 @@ tools["folke/which-key.nvim"] = {
 tools["folke/trouble.nvim"] = {
 	opt = true,
 	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
-	config = conf.trouble,
+  config = function()
+    require('modules.tools.config.trouble')
+  end
 }
 tools["dstein64/vim-startuptime"] = {opt = true, cmd = "StartupTime"}
+
 -- tools["gelguy/wilder.nvim"] = {
 --   event = "CmdlineEnter",
 --   config = conf.wilder,
 --   requires = {{"romgrk/fzy-lua-native", after = "wilder.nvim"}}
 -- }
+
 tools["nathom/filetype.nvim"] = {
   opt = false,
-  config = conf.filetype
+  config = function()
+    require('modules.tools.config.filetype')
+  end
 }
 
 return tools

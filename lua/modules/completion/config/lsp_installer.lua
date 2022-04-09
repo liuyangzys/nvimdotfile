@@ -1,9 +1,10 @@
--- vim.cmd([[packadd nvim-lsp-installer]])
--- vim.cmd([[packadd lsp_signature.nvim]])
--- vim.cmd([[packadd cmp-nvim-lsp]])
--- vim.cmd([[packadd aerial.nvim]])
+local lsp_installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not lsp_installer_ok then
+  vim.notify("nvim-lsp-installer not found!")
+  return
+end
 
-local M = {}
+vim.cmd([[packadd cmp-nvim-lsp]])
 
 local function custom_attach(client, buffnr)
   require("lsp_signature").on_attach(
@@ -152,42 +153,31 @@ local enhance_server_opts = {
   end
 }
 
-function M.nvim_lsp_config()
-  -- local nvim_lsp = require("lspconfig")
-  -- nvim_lsp.html.setup({})
-end
-
-function M.lsp_installer_config()
-  local lsp_installer = require("nvim-lsp-installer")
-  lsp_installer.settings(
-    {
-      ui = {
-        icons = {
-          server_installed = "✓",
-          server_pending = "➜",
-          server_uninstalled = "✗"
-        }
+lsp_installer.settings(
+  {
+    ui = {
+      icons = {
+        server_installed = "✓",
+        server_pending = "➜",
+        server_uninstalled = "✗"
       }
     }
-  )
-  lsp_installer.on_server_ready(
-    function(server)
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      vim.cmd([[packadd cmp-nvim-lsp]])
-      capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-      local opts = {
-        capabilities = capabilities,
-        flags = {debounce_text_changes = 500},
-        on_attach = custom_attach
-      }
+  }
+)
+lsp_installer.on_server_ready(
+  function(server)
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+    local opts = {
+      capabilities = capabilities,
+      flags = {debounce_text_changes = 500},
+      on_attach = custom_attach
+    }
 
-      if enhance_server_opts[server.name] then
-        enhance_server_opts[server.name](opts)
-      end
-
-      server:setup(opts)
+    if enhance_server_opts[server.name] then
+      enhance_server_opts[server.name](opts)
     end
-  )
-end
 
-return M
+    server:setup(opts)
+  end
+)
