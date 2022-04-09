@@ -148,7 +148,7 @@ local load_core = function()
   disable_distribution_plugins()
 
   pack.ensure_plugins()
-  neovide_config()
+  -- neovide_config()
   -- dashboard_config()
   -- minimap_config()
   -- clipboard_settings()

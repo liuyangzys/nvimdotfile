@@ -129,7 +129,7 @@ local dap_map = {
   ["n|<leader>db"] = map_cr("lua require('dap').toggle_breakpoint()"):with_noremap():with_silent(),
   ["n|<leader>dB"] = map_cr("lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))"):with_noremap():with_silent(),
   ["n|<leader>dl"] = map_cr("lua require('dap').repl.open()"):with_noremap():with_silent(),
-  ["n|<leader>dv"] = map_cr("lua require('dapui').eval()"):with_noremap():with_silent()
+  ["n|<leader>dv"] = map_cr("lua require('dapui').eval(nil, {enter = true})"):with_noremap():with_silent()
 }
 
 local gitsigns_map = {

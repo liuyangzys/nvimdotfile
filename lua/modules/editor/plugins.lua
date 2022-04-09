@@ -69,11 +69,6 @@ editor["andymass/vim-matchup"] = {
   config = conf.matchup
 }
 editor["rhysd/accelerated-jk"] = {opt = true, event = "BufReadPost"}
-editor["romainl/vim-cool"] = {
-  opt = true,
-  event = {"CursorMoved", "InsertEnter"}
-}
-
 editor["ggandor/lightspeed.nvim"] = {
   opt = true,
   event = "BufReadPost"
