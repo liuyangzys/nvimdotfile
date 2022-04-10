@@ -8,15 +8,15 @@ local conf = require("modules.lang.config")
 --     config = conf.lang_go
 -- }
 
-lang["rust-lang/rust.vim"] = {opt = true, ft = "rust"}
+lang["rust-lang/rust.vim"] = { opt = true, ft = "rust" }
 lang["simrat39/rust-tools.nvim"] = {
-  opt = true,
-  ft = "rust",
-  config = conf.rust_tools,
-  requires = {{"nvim-lua/plenary.nvim", opt = false}}
+	opt = true,
+	ft = "rust",
+	config = conf.rust_tools,
+	requires = { { "nvim-lua/plenary.nvim", opt = false } },
 }
 
-lang["npxbr/glow.nvim"] = {cmd = "Glow", opt = true}
+lang["npxbr/glow.nvim"] = { cmd = "Glow", opt = true }
 
 -- lang["kristijanhusak/orgmode.nvim"] = {
 --     opt = true,

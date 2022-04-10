@@ -1,31 +1,31 @@
 local tools = {}
 
-tools["RishabhRD/popfix"] = {opt = false}
+tools["RishabhRD/popfix"] = { opt = false }
 
-tools["nvim-lua/plenary.nvim"] = {opt = false}
+tools["nvim-lua/plenary.nvim"] = { opt = false }
 
 tools["nvim-telescope/telescope.nvim"] = {
-  opt = true,
-  module = "telescope",
-  cmd = "Telescope",
-  config = function ()
-    require('modules.tools.config.telescope')
-  end,
-  requires = {
-    {"nvim-lua/plenary.nvim", opt = false},
-    {"nvim-lua/popup.nvim", opt = true}
-  }
+	opt = true,
+	module = "telescope",
+	cmd = "Telescope",
+	config = function()
+		require("modules.tools.config.telescope")
+	end,
+	requires = {
+		{ "nvim-lua/plenary.nvim", opt = false },
+		{ "nvim-lua/popup.nvim", opt = true },
+	},
 }
 
 tools["nvim-telescope/telescope-fzf-native.nvim"] = {
-  opt = true,
-  run = "make",
-  after = "telescope.nvim"
+	opt = true,
+	run = "make",
+	after = "telescope.nvim",
 }
 
 tools["skywind3000/asyncrun.vim"] = {
-  opt = true,
-  cmd = {"AsyncRun", "AsyncStop"}
+	opt = true,
+	cmd = { "AsyncRun", "AsyncStop" },
 }
 
 -- tools["nvim-telescope/telescope-project.nvim"] = {
@@ -44,20 +44,20 @@ tools["skywind3000/asyncrun.vim"] = {
 --   cmd = {"SnipRun", "'<,'>SnipRun"}
 -- }
 tools["folke/which-key.nvim"] = {
-  opt = true,
-  keys = "<leader>",
-  config = function()
-    require("which-key").setup({})
-  end
+	opt = true,
+	keys = "<leader>",
+	config = function()
+		require("which-key").setup({})
+	end,
 }
 tools["folke/trouble.nvim"] = {
 	opt = true,
 	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
-  config = function()
-    require('modules.tools.config.trouble')
-  end
+	config = function()
+		require("modules.tools.config.trouble")
+	end,
 }
-tools["dstein64/vim-startuptime"] = {opt = true, cmd = "StartupTime"}
+tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
 
 -- tools["gelguy/wilder.nvim"] = {
 --   event = "CmdlineEnter",
@@ -66,10 +66,10 @@ tools["dstein64/vim-startuptime"] = {opt = true, cmd = "StartupTime"}
 -- }
 
 tools["nathom/filetype.nvim"] = {
-  opt = false,
-  config = function()
-    require('modules.tools.config.filetype')
-  end
+	opt = false,
+	config = function()
+		require("modules.tools.config.filetype")
+	end,
 }
 
 return tools
