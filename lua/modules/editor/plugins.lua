@@ -1,15 +1,4 @@
 local editor = {}
--- local conf = require("modules.editor.config")
-
-editor["junegunn/vim-easy-align"] = { opt = true, event = "BufReadPost", cmd = "EasyAlign" }
-
-editor["mhartington/formatter.nvim"] = {
-	opt = true,
-	cmd = "Format",
-	config = function()
-		require("modules.editor.config.formatter")
-	end,
-}
 
 editor["itchyny/vim-cursorword"] = {
 	opt = true,
@@ -111,7 +100,18 @@ editor["rmagatti/auto-session"] = {
 		require("modules.editor.config.auto-session")
 	end,
 }
+
+-- use 'jk' as Esc
 editor["jdhao/better-escape.vim"] = { opt = true, event = "InsertEnter" }
+
+editor["puremourning/vimspector"] = {
+	opt = true,
+	-- keys = "<F5>",
+	setup = function()
+		vim.g.vimspector_enable_mappings = "VISUAL_STUDIO"
+	end,
+}
+
 editor["rcarriga/nvim-dap-ui"] = {
 	opt = true,
 	config = function()
@@ -127,6 +127,7 @@ editor["rcarriga/nvim-dap-ui"] = {
 		},
 	},
 }
+
 editor["tpope/vim-fugitive"] = { opt = true, cmd = { "Git", "G" } }
 editor["TimUntersberger/neogit"] = {
 	opt = true,

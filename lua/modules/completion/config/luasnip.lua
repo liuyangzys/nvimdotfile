@@ -8,4 +8,6 @@ luasnip.config.set_config({
 	history = true,
 	updateevents = "TextChanged,TextChangedI",
 })
+
+vim.cmd([[packadd friendly-snippets]])
 require("luasnip/loaders/from_vscode").load()

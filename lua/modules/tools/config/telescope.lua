@@ -1,10 +1,8 @@
--- vim.cmd([[packadd sqlite.lua]])
 vim.cmd([[packadd telescope-fzf-native.nvim]])
--- vim.cmd([[packadd telescope-project.nvim]])
--- vim.cmd([[packadd telescope-frecency.nvim]])
--- vim.cmd([[packadd telescope-zoxide]])
 
-require("telescope").setup({
+local telescope = require("telescope")
+
+telescope.setup({
 	defaults = {
 		prompt_prefix = "🔭 ",
 		selection_caret = " ",
@@ -55,3 +53,16 @@ require("telescope").load_extension("fzf")
 -- require("telescope").load_extension("project")
 -- require("telescope").load_extension("zoxide")
 -- require("telescope").load_extension("frecency")
+
+-- show search results in Trouble.nvim
+vim.cmd([[packadd trouble.nvim]])
+local actions = require("telescope.actions")
+local trouble = require("trouble.providers.telescope")
+telescope.setup({
+	defaults = {
+		mappings = {
+			i = { ["<c-t>"] = trouble.open_with_trouble },
+			n = { ["<c-t>"] = trouble.open_with_trouble },
+		},
+	},
+})

@@ -81,7 +81,7 @@ completion["hrsh7th/nvim-cmp"] = {
 completion["L3MON4D3/LuaSnip"] = {
 	opt = true,
 	after = { "nvim-cmp" },
-	requires = "rafamadriz/friendly-snippets",
+	requires = { "rafamadriz/friendly-snippets", opt = true },
 	config = function()
 		require("modules.completion.config.luasnip")
 	end,

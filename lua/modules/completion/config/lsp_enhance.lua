@@ -200,7 +200,7 @@ M["clangd"] = function(opts)
 		"--clang-tidy",
 		"--suggest-missing-includes",
 	}
-	-- opts.capabilities.offsetEncoding = { "utf-16" }
+	opts.capabilities.offsetEncoding = { "utf-16" }
 	opts.single_file_support = true
 	-- Disable `clangd`'s format
 	-- opts.on_attach = function(client, buffnr)

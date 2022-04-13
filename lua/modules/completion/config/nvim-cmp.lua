@@ -27,20 +27,6 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
--- use buffer source for `/`.
-cmp.setup.cmdline("/", {
-	sources = {
-		{ name = "buffer" },
-	},
-})
--- use cmdline & path source for ':'.
-cmp.setup.cmdline(":", {
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
-})
 cmp.setup({
 	sorting = {
 		comparators = {
@@ -158,4 +144,22 @@ cmp.setup({
 		{ name = "latex_symbols" },
 		-- {name = 'cmp_tabnine'}
 	},
+})
+
+-- `/` cmdline setup.
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
+})
+
+-- `:` cmdline setup.
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
 })

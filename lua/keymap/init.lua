@@ -57,8 +57,8 @@ local plug_map = {
 	["n|j"] = map_cmd("v:lua.enhance_jk_move('j')"):with_silent():with_expr(),
 	["n|k"] = map_cmd("v:lua.enhance_jk_move('k')"):with_silent():with_expr(),
 	-- Plugin EasyAlign
-	["n|ga"] = map_cmd("v:lua.enhance_align('nga')"):with_expr(),
-	["x|ga"] = map_cmd("v:lua.enhance_align('xga')"):with_expr(),
+	-- ["n|ga"] = map_cmd("v:lua.enhance_align('nga')"):with_expr(),
+	-- ["x|ga"] = map_cmd("v:lua.enhance_align('xga')"):with_expr(),
 	-- Plugin split-term
 	-- ["n|<F5>"] = map_cr("VTerm"):with_noremap():with_silent(),
 	["n|<C-w>t"] = map_cr("VTerm"):with_noremap():with_silent(),
@@ -108,11 +108,11 @@ local lsp_map = {
 	["n|<C-Down>"] = map_cr("lua require('lspsaga.action').smart_scroll_with_saga(1)"):with_noremap():with_silent(),
 	["n|<leader>ca"] = map_cr("Lspsaga code_action"):with_noremap():with_silent(),
 	["v|<leader>ca"] = map_cu("Lspsaga range_code_action"):with_noremap():with_silent(),
-	["n|<leader>gr"] = map_cr("lua vim.lsp.buf.references()"):with_noremap():with_silent(),
+	-- ["n|<leader>gr"] = map_cr("lua vim.lsp.buf.references()"):with_noremap():with_silent(),
+	["n|<leader>gr"] = map_cu("Telescope lsp_references"):with_noremap():with_silent(),
 	["n|<leader>rn"] = map_cr("Lspsaga rename"):with_noremap():with_silent(),
 	["n|<leader>fs"] = map_cu("Telescope lsp_workspace_symbols"):with_noremap():with_silent(),
 	["n|<leader>fm"] = map_cr("lua vim.lsp.buf.formatting_sync()"):with_noremap():with_silent(),
-	["v|<leader>fm"] = map_cr("lua vim.lsp.buf.range_formatting()"):with_noremap():with_silent(),
 }
 
 local dap_map = {

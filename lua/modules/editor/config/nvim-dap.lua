@@ -19,6 +19,7 @@ dap.adapters.cppdbg = {
 	type = "executable",
 	-- command = os.getenv("HOME") .. "/.vscode/extensions/ms-vscode.cpptools-1.9.7/debugAdapters/bin/OpenDebugAD7"
 	command = "C:/Users/liuya/.vscode/extensions/ms-vscode.cpptools-1.9.7/debugAdapters/bin/OpenDebugAD7",
+	-- command = "C:/Users/liuya/AppData/Local/nvim-data/site/pack/packer/opt/vimspector/gadgets/windows/vscode-cpptools/debugAdapters/bin/OpenDebugAD7",
 }
 dap.configurations.c = {}
 dap.configurations.cpp = {}

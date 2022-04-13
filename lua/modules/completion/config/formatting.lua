@@ -19,8 +19,8 @@ M.formatToggle = function(value)
 	local var = format_disabled_var()
 	vim.g[var] = xor(value ~= nil, value, not vim.g[var])
 end
-vim.cmd([[command! FormatDisable lua require'modules.completion.formatting'.formatToggle(true)]])
-vim.cmd([[command! FormatEnable lua require'modules.completion.formatting'.formatToggle(false)]])
+vim.cmd([[command! FormatDisable lua require'modules.completion.config.formatting'.formatToggle(true)]])
+vim.cmd([[command! FormatEnable lua require'modules.completion.config.formatting'.formatToggle(false)]])
 
 M.format = function()
 	if not vim.b.saving_format and not vim.g[format_disabled_var()] then
