@@ -4,6 +4,8 @@ if not dap_ok then
 	return
 end
 
+local global = require("core.global")
+
 -- set keymaps for dap
 require("keymap").dap_on_attach()
 
@@ -12,17 +14,29 @@ dap.adapters.python = {
 	command = "python",
 	args = { "-m", "debugpy.adapter" },
 }
-dap.configurations.python = {}
+
+dap.adapters.cortex_debug = {
+	type = "executable",
+	command = "node",
+	args = { global.home .. "/.vscode/extensions/marus25.cortex-debug-1.4.4/dist/debugadapter.js" },
+	options = { detached = false },
+}
 
 dap.adapters.cppdbg = {
 	id = "cppdbg",
 	type = "executable",
-	-- command = os.getenv("HOME") .. "/.vscode/extensions/ms-vscode.cpptools-1.9.7/debugAdapters/bin/OpenDebugAD7"
-	command = "C:/Users/liuya/.vscode/extensions/ms-vscode.cpptools-1.9.7/debugAdapters/bin/OpenDebugAD7",
-	-- command = "C:/Users/liuya/AppData/Local/nvim-data/site/pack/packer/opt/vimspector/gadgets/windows/vscode-cpptools/debugAdapters/bin/OpenDebugAD7",
+	command = global.home .. "/.vscode/extensions/ms-vscode.cpptools-1.9.7/debugAdapters/bin/OpenDebugAD7",
+	options = { detached = false },
 }
+
+dap.configurations.python = {}
 dap.configurations.c = {}
 dap.configurations.cpp = {}
 
 -- load from json file
-require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "c", "cpp" }, python = { "python" } })
+local load_js = {
+	cppdbg = { "c", "cpp" },
+	python = { "python" },
+	cortex_debug = { "c", "cpp" },
+}
+require("dap.ext.vscode").load_launchjs(nil, load_js)
