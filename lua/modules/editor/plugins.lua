@@ -141,13 +141,13 @@ editor["famiu/bufdelete.nvim"] = {
 	opt = true,
 	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
 }
-editor["edluffy/specs.nvim"] = {
-	opt = true,
-	event = "CursorMoved",
-	config = function()
-		require("modules.editor.config.specs")
-	end,
-}
+-- editor["edluffy/specs.nvim"] = {
+-- 	opt = true,
+-- 	event = "CursorMoved",
+-- 	config = function()
+-- 		require("modules.editor.config.specs")
+-- 	end,
+-- }
 editor["abecodes/tabout.nvim"] = {
 	opt = true,
 	event = "InsertEnter",
