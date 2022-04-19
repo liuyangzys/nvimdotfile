@@ -73,7 +73,7 @@ local function load_options()
 		foldlevelstart = 99,
 		ruler = true,
 		cursorline = true,
-		cursorcolumn = true,
+		-- cursorcolumn = true,
 		list = true,
 		showtabline = 2,
 		winwidth = 30,

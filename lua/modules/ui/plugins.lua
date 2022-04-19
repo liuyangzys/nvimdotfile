@@ -20,6 +20,13 @@ ui["hoob3rt/lualine.nvim"] = {
 ui["arkav/lualine-lsp-progress"] = { opt = true, after = "nvim-gps" }
 
 -- ui["glepnir/dashboard-nvim"] = { opt = true, event = "BufWinEnter" }
+ui["goolord/alpha-nvim"] = {
+	opt = true,
+	event = "BufWinEnter",
+	config = function()
+		require("modules.ui.config.alpha-nvim")
+	end,
+}
 
 ui["kyazdani42/nvim-tree.lua"] = {
 	opt = true,

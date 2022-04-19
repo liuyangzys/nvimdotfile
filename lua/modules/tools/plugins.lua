@@ -1,8 +1,8 @@
 local tools = {}
 
-tools["RishabhRD/popfix"] = { opt = false }
-
+tools["lewis6991/impatient.nvim"] = { opt = false }
 tools["nvim-lua/plenary.nvim"] = { opt = false }
+tools["RishabhRD/popfix"] = { opt = false }
 
 tools["nvim-telescope/telescope.nvim"] = {
 	opt = true,
@@ -13,14 +13,24 @@ tools["nvim-telescope/telescope.nvim"] = {
 	end,
 	requires = {
 		{ "nvim-lua/plenary.nvim", opt = false },
-		{ "nvim-lua/popup.nvim", opt = true },
 	},
+}
+
+tools["nvim-telescope/telescope-ui-select.nvim"] = {
+	opt = true,
+	after = "telescope.nvim",
+	config = function()
+		require("modules.tools.config.telescope-ui-select")
+	end,
 }
 
 tools["nvim-telescope/telescope-fzf-native.nvim"] = {
 	opt = true,
 	run = "make",
 	after = "telescope.nvim",
+	config = function()
+		require("modules.tools.config.telescope-fzf-native")
+	end,
 }
 
 tools["skywind3000/asyncrun.vim"] = {

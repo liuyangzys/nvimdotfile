@@ -7,16 +7,14 @@ editor["itchyny/vim-cursorword"] = {
 		require("modules.editor.config.vim-cursorwod")
 	end,
 }
-editor["terrortylor/nvim-comment"] = {
-	opt = false,
+editor["numToStr/Comment.nvim"] = {
+	opt = true,
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("nvim_comment").setup({
-			hook = function()
-				require("ts_context_commentstring.internal").update_commentstring()
-			end,
-		})
+		require("modules.editor.config.Comment")
 	end,
 }
+
 editor["nvim-treesitter/nvim-treesitter"] = {
 	opt = true,
 	run = ":TSUpdate",
@@ -67,7 +65,8 @@ editor["andymass/vim-matchup"] = {
 		vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
 	end,
 }
-editor["rhysd/accelerated-jk"] = { opt = true, event = "BufReadPost" }
+editor["rhysd/accelerated-jk"] = { opt = false }
+
 editor["ggandor/lightspeed.nvim"] = {
 	opt = true,
 	event = "BufReadPost",
@@ -93,11 +92,27 @@ editor["norcalli/nvim-colorizer.lua"] = {
 		require("modules.editor.config.nvim-colorizer")
 	end,
 }
-editor["rmagatti/auto-session"] = {
+-- editor["rmagatti/auto-session"] = {
+-- 	opt = true,
+-- 	cmd = { "SaveSession", "RestoreSession", "DeleteSession" },
+-- 	config = function()
+-- 		require("modules.editor.config.auto-session")
+-- 	end,
+-- }
+-- editor["rmagatti/session-lens"] = {
+-- 	opt = true,
+-- 	requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+-- 	cmd = { "SearchSession" },
+-- 	config = function()
+-- 		require("modules.editor.config.session-lens")
+-- 	end,
+-- }
+
+editor["Shatur/neovim-session-manager"] = {
 	opt = true,
-	cmd = { "SaveSession", "RestoreSession", "DeleteSession" },
+	cmd = { "SessionManager" },
 	config = function()
-		require("modules.editor.config.auto-session")
+		require("modules.editor.config.neovim-session-manager")
 	end,
 }
 

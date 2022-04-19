@@ -35,20 +35,20 @@ dapui.setup({
 		edit = "e",
 		repl = "r",
 	},
-	sidebar = {
-		elements = {
-			-- Provide as ID strings or tables with "id" and "size" keys
-			{
-				id = "scopes",
-				size = 0.45, -- Can be float or integer > 1
-			},
-			{ id = "watches", size = 0.35 },
-			{ id = "stacks", size = 0.15 },
-			{ id = "breakpoints", size = 0.15 },
-		},
-		size = 40,
-		position = "left",
-	},
+	-- sidebar = {
+	-- 	elements = {
+	-- 		-- Provide as ID strings or tables with "id" and "size" keys
+	-- 		{
+	-- 			id = "scopes",
+	-- 			size = 0.45, -- Can be float or integer > 1
+	-- 		},
+	-- 		{ id = "watches", size = 0.35 },
+	-- 		{ id = "stacks", size = 0.15 },
+	-- 		{ id = "breakpoints", size = 0.15 },
+	-- 	},
+	-- 	size = 40,
+	-- 	position = "left",
+	-- },
 	tray = { elements = { "repl" }, size = 5, position = "bottom" },
 	floating = {
 		max_height = nil,

@@ -1,5 +1,3 @@
-vim.cmd([[packadd telescope-fzf-native.nvim]])
-
 local telescope = require("telescope")
 
 telescope.setup({
@@ -48,11 +46,6 @@ telescope.setup({
 		},
 	},
 })
-
-require("telescope").load_extension("fzf")
--- require("telescope").load_extension("project")
--- require("telescope").load_extension("zoxide")
--- require("telescope").load_extension("frecency")
 
 -- show search results in Trouble.nvim
 vim.cmd([[packadd trouble.nvim]])

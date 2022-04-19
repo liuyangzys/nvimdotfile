@@ -27,7 +27,7 @@ require("catppuccin").setup({
 		},
 		-- lsp_trouble = true,
 		lsp_saga = true,
-		gitgutter = false,
+		-- gitgutter = false,
 		gitsigns = true,
 		telescope = true,
 		nvimtree = { enabled = true, show_root = true },
