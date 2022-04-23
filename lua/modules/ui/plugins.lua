@@ -3,6 +3,12 @@ local ui = {}
 ui["kyazdani42/nvim-web-devicons"] = { opt = false }
 -- ui["sainnhe/edge"] = {opt = false, config = conf.edge}
 -- ui["rebelot/kanagawa.nvim"] = {opt = false, config = conf.kanagawa}
+ui["folke/tokyonight.nvim"] = {
+	opt = false,
+	config = function()
+		require("modules.ui.config.tokyonight")
+	end,
+}
 ui["catppuccin/nvim"] = {
 	opt = false,
 	as = "catppuccin",
