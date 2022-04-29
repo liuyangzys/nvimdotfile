@@ -1,10 +1,10 @@
 require("nvim-ts-autotag").setup({
-	filetypes = {
-		"html",
-		"xml",
-		"javascript",
-		"typescriptreact",
-		"javascriptreact",
-		"vue",
-	},
+  filetypes = {
+    "html",
+    "xml",
+    "javascript",
+    "typescriptreact",
+    "javascriptreact",
+    "vue",
+  },
 })

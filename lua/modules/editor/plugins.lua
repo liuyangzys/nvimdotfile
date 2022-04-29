@@ -1,160 +1,157 @@
 local editor = {}
 
 editor["itchyny/vim-cursorword"] = {
-	opt = true,
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		require("modules.editor.config.vim-cursorwod")
-	end,
+  opt = true,
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    require("modules.editor.config.vim-cursorwod")
+  end,
 }
 editor["numToStr/Comment.nvim"] = {
-	opt = true,
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		require("modules.editor.config.Comment")
-	end,
+  opt = true,
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    require("modules.editor.config.Comment")
+  end,
 }
 
 editor["nvim-treesitter/nvim-treesitter"] = {
-	opt = true,
-	run = ":TSUpdate",
-	event = "BufRead",
-	config = function()
-		require("modules.editor.config.nvim-treesitter")
-	end,
+  opt = true,
+  run = ":TSUpdate",
+  event = "BufRead",
+  config = function()
+    require("modules.editor.config.nvim-treesitter")
+  end,
 }
 editor["nvim-treesitter/nvim-treesitter-textobjects"] = {
-	opt = true,
-	after = "nvim-treesitter",
+  opt = true,
+  after = "nvim-treesitter",
 }
 editor["romgrk/nvim-treesitter-context"] = {
-	opt = true,
-	after = "nvim-treesitter",
+  opt = true,
+  after = "nvim-treesitter",
 }
 editor["p00f/nvim-ts-rainbow"] = {
-	opt = true,
-	after = "nvim-treesitter",
-	event = "BufRead",
+  opt = true,
+  after = "nvim-treesitter",
+  event = "BufRead",
 }
 editor["JoosepAlviste/nvim-ts-context-commentstring"] = {
-	opt = true,
-	after = "nvim-treesitter",
+  opt = true,
+  after = "nvim-treesitter",
 }
 editor["mfussenegger/nvim-ts-hint-textobject"] = {
-	opt = true,
-	after = "nvim-treesitter",
+  opt = true,
+  after = "nvim-treesitter",
 }
 editor["SmiteshP/nvim-gps"] = {
-	opt = true,
-	after = "nvim-treesitter",
-	config = function()
-		require("modules.editor.config.nvim-gps")
-	end,
+  opt = true,
+  after = "nvim-treesitter",
+  config = function()
+    require("modules.editor.config.nvim-gps")
+  end,
 }
 editor["windwp/nvim-ts-autotag"] = {
-	opt = true,
-	ft = { "html", "xml" },
-	config = function()
-		require("modules.editor.config.nvim-ts-autotag")
-	end,
+  opt = true,
+  ft = { "html", "xml" },
+  config = function()
+    require("modules.editor.config.nvim-ts-autotag")
+  end,
 }
 editor["andymass/vim-matchup"] = {
-	opt = true,
-	after = "nvim-treesitter",
-	config = function()
-		vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
-	end,
+  opt = true,
+  after = "nvim-treesitter",
+  config = function()
+    vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
+  end,
 }
 editor["rhysd/accelerated-jk"] = { opt = false }
 
 editor["ggandor/lightspeed.nvim"] = {
-	opt = true,
-	event = "BufReadPost",
+  opt = true,
+  event = "BufReadPost",
 }
 editor["karb94/neoscroll.nvim"] = {
-	opt = true,
-	event = "WinScrolled",
-	config = function()
-		require("modules.editor.config.neoscroll")
-	end,
+  opt = true,
+  event = "WinScrolled",
+  config = function()
+    require("modules.editor.config.neoscroll")
+  end,
 }
-editor["vimlab/split-term.vim"] = { opt = true, cmd = { "Term", "VTerm" } }
--- editor["akinsho/nvim-toggleterm.lua"] = {
+-- editor["vimlab/split-term.vim"] = { opt = true, cmd = { "Term", "VTerm" } }
+editor["akinsho/nvim-toggleterm.lua"] = {
+  opt = true,
+  event = "BufRead",
+  config = function()
+    require("modules.editor.config.nvim-toggleterm")
+  end,
+}
+-- editor["numtostr/FTerm.nvim"] = {
 -- 	opt = true,
 -- 	event = "BufRead",
--- 	config = conf.toggleterm,
+-- 	config = function()
+-- 		require("modules.editor.config.Fterm")
+-- 	end,
 -- }
--- editor["numtostr/FTerm.nvim"] = { opt = true, event = "BufRead" }
 editor["norcalli/nvim-colorizer.lua"] = {
-	opt = true,
-	event = "BufRead",
-	config = function()
-		require("modules.editor.config.nvim-colorizer")
-	end,
+  opt = true,
+  event = "BufRead",
+  config = function()
+    require("modules.editor.config.nvim-colorizer")
+  end,
 }
--- editor["rmagatti/auto-session"] = {
--- 	opt = true,
--- 	cmd = { "SaveSession", "RestoreSession", "DeleteSession" },
--- 	config = function()
--- 		require("modules.editor.config.auto-session")
--- 	end,
--- }
--- editor["rmagatti/session-lens"] = {
--- 	opt = true,
--- 	requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
--- 	cmd = { "SearchSession" },
--- 	config = function()
--- 		require("modules.editor.config.session-lens")
--- 	end,
--- }
 
 editor["Shatur/neovim-session-manager"] = {
-	opt = true,
-	cmd = { "SessionManager" },
-	config = function()
-		require("modules.editor.config.neovim-session-manager")
-	end,
+  opt = true,
+  cmd = { "SessionManager" },
+  event = { "DirChangedPre" },
+  config = function()
+    require("modules.editor.config.neovim-session-manager")
+  end,
 }
 
 -- use 'jk' as Esc
 editor["jdhao/better-escape.vim"] = { opt = true, event = "InsertEnter" }
 
 editor["puremourning/vimspector"] = {
-	opt = true,
-	-- keys = "<F5>",
-	setup = function()
-		vim.g.vimspector_enable_mappings = "VISUAL_STUDIO"
-	end,
+  opt = true,
+  -- keys = "<F5>",
+  setup = function()
+    vim.g.vimspector_enable_mappings = "VISUAL_STUDIO"
+  end,
+  config = function()
+    require("modules.editor.config.vimspector")
+  end,
 }
 
 editor["rcarriga/nvim-dap-ui"] = {
-	opt = true,
-	config = function()
-		require("modules.editor.config.nvim-dap-ui")
-	end,
-	keys = "<F5>",
-	requires = {
-		{
-			"mfussenegger/nvim-dap",
-			config = function()
-				require("modules.editor.config.nvim-dap")
-			end,
-		},
-	},
+  opt = true,
+  config = function()
+    require("modules.editor.config.nvim-dap-ui")
+  end,
+  keys = "<F5>",
+  requires = {
+    {
+      "mfussenegger/nvim-dap",
+      config = function()
+        require("modules.editor.config.nvim-dap")
+      end,
+    },
+  },
 }
 
 editor["tpope/vim-fugitive"] = { opt = true, cmd = { "Git", "G" } }
 editor["TimUntersberger/neogit"] = {
-	opt = true,
-	cmd = { "Neogit" },
-	config = function()
-		require("modules.editor.config.neogit")
-	end,
-	requires = { "nvim-lua/plenary.nvim" },
+  opt = true,
+  cmd = { "Neogit" },
+  config = function()
+    require("modules.editor.config.neogit")
+  end,
+  requires = { "nvim-lua/plenary.nvim" },
 }
 editor["famiu/bufdelete.nvim"] = {
-	opt = true,
-	cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
+  opt = true,
+  cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
 }
 -- editor["edluffy/specs.nvim"] = {
 -- 	opt = true,
@@ -164,13 +161,13 @@ editor["famiu/bufdelete.nvim"] = {
 -- 	end,
 -- }
 editor["abecodes/tabout.nvim"] = {
-	opt = true,
-	event = "InsertEnter",
-	wants = "nvim-treesitter",
-	after = "nvim-cmp",
-	config = function()
-		require("modules.editor.config.tabout")
-	end,
+  opt = true,
+  event = "InsertEnter",
+  wants = "nvim-treesitter",
+  after = "nvim-cmp",
+  config = function()
+    require("modules.editor.config.tabout")
+  end,
 }
 
 return editor
