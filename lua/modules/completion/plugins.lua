@@ -3,8 +3,12 @@ local completion = {}
 completion["neovim/nvim-lspconfig"] = {
   opt = true,
   event = "BufReadPre",
+}
+completion["williamboman/nvim-lsp-installer"] = {
+  opt = true,
+  after = "nvim-lspconfig",
   config = function()
-    require("modules.completion.config.lspconfig")
+    require("modules.completion.config.lsp_installer")
   end,
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {
@@ -14,13 +18,7 @@ completion["jose-elias-alvarez/null-ls.nvim"] = {
     require("modules.completion.config.null-ls")
   end,
 }
-completion["williamboman/nvim-lsp-installer"] = {
-  opt = true,
-  after = "nvim-lspconfig",
-  config = function()
-    require("modules.completion.config.lsp_installer")
-  end,
-}
+
 -- completion["tami5/lspsaga.nvim"] = {
 -- 	opt = true,
 -- 	after = "nvim-lspconfig",

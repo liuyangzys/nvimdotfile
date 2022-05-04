@@ -1,10 +1,21 @@
 local editor = {}
 
-editor["itchyny/vim-cursorword"] = {
-  opt = true,
-  event = { "BufReadPre", "BufNewFile" },
+editor["RRethy/vim-illuminate"] = {
+  event = "BufRead",
   config = function()
-    require("modules.editor.config.vim-cursorwod")
+    vim.g.Illuminate_highlightUnderCursor = 0
+    vim.g.Illuminate_ftblacklist = {
+      "help",
+      "dashboard",
+      "alpha",
+      "packer",
+      "norg",
+      "DoomInfo",
+      "NvimTree",
+      "Outline",
+      "toggleterm",
+      "aerial"
+    }
   end,
 }
 editor["numToStr/Comment.nvim"] = {
@@ -61,8 +72,9 @@ editor["windwp/nvim-ts-autotag"] = {
 editor["andymass/vim-matchup"] = {
   opt = true,
   after = "nvim-treesitter",
-  config = function()
+  setup = function()
     vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
+    vim.cmd([[let g:matchup_surround_enabled = 1]])
   end,
 }
 editor["rhysd/accelerated-jk"] = { opt = false }
@@ -104,7 +116,7 @@ editor["norcalli/nvim-colorizer.lua"] = {
 editor["Shatur/neovim-session-manager"] = {
   opt = true,
   cmd = { "SessionManager" },
-  event = { "DirChangedPre" },
+  after = "telescope.nvim",
   config = function()
     require("modules.editor.config.neovim-session-manager")
   end,
@@ -138,6 +150,13 @@ editor["rcarriga/nvim-dap-ui"] = {
       end,
     },
   },
+}
+editor["theHamsta/nvim-dap-virtual-text"] = {
+  opt = true,
+  after = "nvim-dap-ui",
+  config = function()
+    require('nvim-dap-virtual-text').setup()
+  end
 }
 
 editor["tpope/vim-fugitive"] = { opt = true, cmd = { "Git", "G" } }

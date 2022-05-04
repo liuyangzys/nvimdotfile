@@ -64,7 +64,7 @@ local function load_options()
     switchbuf = "useopen",
     backspace = "indent,eol,start",
     diffopt = "filler,iwhite,internal,algorithm:patience",
-    completeopt = "menuone,noselect",
+    completeopt = "menu,menuone,noselect",
     jumpoptions = "stack",
     showmode = false,
     shortmess = "aoOTIcF",
@@ -126,6 +126,8 @@ local function load_options()
     }
     vim.g.python_host_prog = "/usr/bin/python"
     vim.g.python3_host_prog = "/usr/local/bin/python3"
+  elseif global.is_windows then
+    vim.g.python3_host_prog = "C:\\Users\\liuya\\.virtualenvs\\py310env\\Scripts\\python"
   end
   for name, value in pairs(global_local) do
     vim.o[name] = value

@@ -165,29 +165,18 @@ local _json_schemas = {
 }
 
 M["sumneko_lua"] = function(opts)
-  local runtime_path = vim.split(package.path, ";")
-  table.insert(runtime_path, "lua/?.lua")
-  table.insert(runtime_path, "lua/?/init.lua")
   opts.settings = {
     Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = "LuaJIT",
-        -- Setup your lua path
-        path = runtime_path,
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
-      },
+      diagnostics = { globals = { "vim" } },
       workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+        },
+        maxPreload = 100000,
+        preloadFileSize = 10000,
       },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
+      telemetry = { enable = false },
     },
   }
 end
@@ -195,18 +184,13 @@ end
 M["clangd"] = function(opts)
   opts.args = {
     "--background-index",
-    -- "-std=c++20",
+    "-std=c++20",
     "--pch-storage=memory",
     "--clang-tidy",
     "--suggest-missing-includes",
   }
   opts.capabilities.offsetEncoding = { "utf-16" }
   opts.single_file_support = true
-  -- Disable `clangd`'s format
-  -- opts.on_attach = function(client, buffnr)
-  -- client.resolved_capabilities.document_formatting = false
-  -- custom_attach(client, buffnr)
-  -- end
 end
 M["jsonls"] = function(opts)
   opts.settings = {
@@ -216,38 +200,4 @@ M["jsonls"] = function(opts)
     },
   }
 end
-M["tsserver"] = function(opts)
-  -- Disable `tsserver`'s format
-  -- opts.on_attach = function(client, buffnr)
-  -- client.resolved_capabilities.document_formatting = false
-  -- custom_attach(client, buffnr)
-  -- end
-end
-M["dockerls"] = function(opts)
-  -- Disable `dockerls`'s format
-  -- opts.on_attach = function(client, buffnr)
-  -- client.resolved_capabilities.document_formatting = false
-  -- custom_attach(client, buffnr)
-  -- end
-end
-
-M["gopls"] = function(opts)
-  opts.settings = {
-    gopls = {
-      usePlaceholders = true,
-      analyses = {
-        nilness = true,
-        shadow = true,
-        unusedparams = true,
-        unusewrites = true,
-      },
-    },
-  }
-  -- Disable `gopls`'s format
-  -- opts.on_attach = function(client, buffnr)
-  -- client.resolved_capabilities.document_formatting = false
-  -- custom_attach(client, buffnr)
-  -- end
-end
-
 return M

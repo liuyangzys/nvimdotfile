@@ -21,7 +21,9 @@ function autocmd.load_autocmds()
       {
         "BufWritePost",
         [[$VIM_PATH/{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]],
-      }, -- Reload Vim script automatically if setlocal autoread
+      },
+
+      -- Reload Vim script automatically if setlocal autoread
       {
         "BufWritePost,FileWritePost",
         "*.vim",
@@ -32,17 +34,14 @@ function autocmd.load_autocmds()
       { "BufWritePre", "MERGE_MSG", "setlocal noundofile" },
       { "BufWritePre", "*.tmp", "setlocal noundofile" },
       { "BufWritePre", "*.bak", "setlocal noundofile" },
-      -- { "BufEnter", "*", "silent! lcd %:p:h" }, -- auto place to last edit
+
+      -- auto change directory
+      -- { "BufEnter", "*", "silent! lcd %:p:h" },
       {
         "BufReadPost",
         "*",
         [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif]],
       },
-      -- Auto toggle fcitx5
-      -- {"InsertLeave", "* :silent", "!fcitx5-remote -c"},
-      -- {"BufCreate", "*", ":silent !fcitx5-remote -c"},
-      -- {"BufEnter", "*", ":silent !fcitx5-remote -c "},
-      -- {"BufLeave", "*", ":silent !fcitx5-remote -c "}
     },
     wins = {
       -- Highlight current line only on focused window
@@ -72,33 +71,18 @@ function autocmd.load_autocmds()
       -- { "FileType", "make", "set noexpandtab shiftwidth=8 softtabstop=0" },
       { "FileType", "c,cpp", "set expandtab tabstop=4 shiftwidth=4" },
       { "FileType", "lua", "set expandtab tabstop=2 shiftwidth=2" },
-      {
-        "FileType",
-        "dashboard",
-        "set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2",
-      },
-      -- {
-      --   "FileType",
-      --   "*",
-      --   [[setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]
-      -- },
-      -- 使用 leader h 快捷打开 c 代码头文件
-      -- {
-      -- 	"FileType",
-      -- 	"c,cpp",
-      -- 	"nnoremap <leader>h :ClangdSwitchSourceHeaderVSplit<CR>",
-      -- },
       { "FileType", "dap-repl", "lua require('dap.ext.autocompl').attach()" },
-      { "FileType", "markdown", "set wrap" },
+      { "FileType", "markdown", "setlocal wrap" },
+      { "FileType", "markdown", "setlocal spell" },
     },
-    -- -- 高亮复制内容
-    -- yank = {
-    -- 	{
-    -- 		"TextYankPost",
-    -- 		"*",
-    -- 		[[silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=300})]],
-    -- 	},
-    -- },
+    -- 高亮复制内容
+    yank = {
+      {
+        "TextYankPost",
+        "*",
+        [[silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=300})]],
+      },
+    },
   }
 
   autocmd.nvim_create_augroups(definitions)

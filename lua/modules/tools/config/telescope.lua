@@ -1,4 +1,8 @@
-local telescope = require("telescope")
+local telescope_ok, telescope = pcall(require, "telescope")
+if not telescope_ok then
+  vim.notify("telescope.nvim not found!")
+  return
+end
 
 telescope.setup({
   defaults = {
@@ -43,19 +47,6 @@ telescope.setup({
       show_scores = true,
       show_unindexed = true,
       ignore_patterns = { "*.git/*", "*/tmp/*" },
-    },
-  },
-})
-
--- show search results in Trouble.nvim
-vim.cmd([[packadd trouble.nvim]])
-local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
-telescope.setup({
-  defaults = {
-    mappings = {
-      i = { ["<c-t>"] = trouble.open_with_trouble },
-      n = { ["<c-t>"] = trouble.open_with_trouble },
     },
   },
 })

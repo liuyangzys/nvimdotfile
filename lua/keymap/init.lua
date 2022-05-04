@@ -132,7 +132,7 @@ function M.load_global_mapping()
   bind.nvim_load_gmapping(plug_map)
 end
 
-function M.lsp_on_attach(client, buffnr)
+function M.lsp_on_attach(buffnr)
   bind.nvim_load_bmapping(lsp_map, buffnr)
 end
 

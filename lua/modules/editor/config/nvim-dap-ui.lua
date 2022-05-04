@@ -1,27 +1,31 @@
 vim.cmd([[packadd nvim-dap]])
+vim.cmd([[packadd nvim-dap-virtual-text]])
 
 local dap = require("dap")
 local dapui = require("dapui")
 
 dap.listeners.before.event_terminated["dapui_config"] = function()
   dapui.close()
+  vim.api.nvim_command("DapVirtualTextDisable")
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
+  vim.api.nvim_command("DapVirtualTextDisable")
 end
 dap.listeners.before.disconnect["dapui_config"] = function()
   dapui.close()
+  vim.api.nvim_command("DapVirtualTextDisable")
 end
-
 dap.listeners.after.event_initialized["dapui"] = function()
   dapui.open()
+  vim.api.nvim_command("DapVirtualTextEnable")
 end
-dap.listeners.after.event_terminated["dapui"] = function()
-  dapui.close()
-end
-dap.listeners.after.event_exited["dapui"] = function()
-  dapui.close()
-end
+-- dap.listeners.after.event_terminated["dapui"] = function()
+--   dapui.close()
+-- end
+-- dap.listeners.after.event_exited["dapui"] = function()
+--   dapui.close()
+-- end
 
 vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 

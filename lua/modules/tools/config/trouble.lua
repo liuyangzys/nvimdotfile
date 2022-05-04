@@ -1,4 +1,10 @@
-require("trouble").setup({
+local trouble_ok, trouble = pcall(require, "trouble")
+if not trouble_ok then
+  vim.notify("trouble.nvim not found!")
+  return
+end
+
+trouble.setup({
   position = "bottom", -- position of the list can be: bottom, top, left, right
   height = 10, -- height of the trouble list when position is top or bottom
   width = 50, -- width of the list when position is left or right
@@ -42,4 +48,17 @@ require("trouble").setup({
     other = "﫠",
   },
   use_lsp_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+
+})
+
+-- show search results in Trouble.nvim
+local telescope = require("telescope")
+local trouble_providers_telescope = require("trouble.providers.telescope")
+telescope.setup({
+  defaults = {
+    mappings = {
+      i = { ["<c-t>"] = trouble_providers_telescope.open_with_trouble },
+      n = { ["<c-t>"] = trouble_providers_telescope.open_with_trouble },
+    },
+  },
 })

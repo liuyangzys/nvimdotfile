@@ -2,7 +2,6 @@ local tools = {}
 
 tools["lewis6991/impatient.nvim"] = { opt = false }
 tools["nvim-lua/plenary.nvim"] = { opt = false }
-tools["RishabhRD/popfix"] = { opt = false }
 
 tools["nvim-telescope/telescope.nvim"] = {
   opt = true,
@@ -13,7 +12,8 @@ tools["nvim-telescope/telescope.nvim"] = {
     require("modules.tools.config.telescope")
   end,
   requires = {
-    { "nvim-lua/plenary.nvim", opt = false },
+		{ "nvim-lua/plenary.nvim", opt = false },
+		{ "nvim-lua/popup.nvim", opt = true },
   },
 }
 
@@ -74,6 +74,7 @@ tools["folke/which-key.nvim"] = {
 tools["folke/trouble.nvim"] = {
   opt = true,
   cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+  after = "telescope.nvim",
   config = function()
     require("modules.tools.config.trouble")
   end,

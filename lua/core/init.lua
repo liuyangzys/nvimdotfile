@@ -1,5 +1,4 @@
 local global = require("core.global")
-
 local vim = vim
 
 -- Create cache dir and subs dir
@@ -51,7 +50,8 @@ local load_core = function()
   local impatient_ok, impatient = pcall(require, "impatient")
   if not impatient_ok then
     vim.notify("impatient.nvim not found!")
-    return
+  else
+    impatient.enable_profile()
   end
 
   local pack = require("core.pack")
@@ -67,7 +67,6 @@ local load_core = function()
 
   vim.cmd([[colorscheme tokyonight]])
   -- vim.cmd([[colorscheme catppuccin]])
-  -- vim.cmd([[colorscheme edge]])
 end
 
 load_core()
