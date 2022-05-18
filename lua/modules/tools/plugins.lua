@@ -3,6 +3,7 @@ local tools = {}
 tools["lewis6991/impatient.nvim"] = { opt = false }
 tools["nvim-lua/plenary.nvim"] = { opt = false }
 
+
 tools["nvim-telescope/telescope.nvim"] = {
   opt = true,
   module = "telescope",
@@ -12,9 +13,16 @@ tools["nvim-telescope/telescope.nvim"] = {
     require("modules.tools.config.telescope")
   end,
   requires = {
-		{ "nvim-lua/plenary.nvim", opt = false },
-		{ "nvim-lua/popup.nvim", opt = true },
+    { "nvim-lua/plenary.nvim", opt = false },
   },
+}
+
+tools["nvim-telescope/telescope-project.nvim"] = {
+  opt = true,
+  after = "telescope.nvim",
+  config = function()
+    require("modules.tools.config.telescope-project")
+  end,
 }
 
 tools["nvim-telescope/telescope-ui-select.nvim"] = {
@@ -41,7 +49,7 @@ tools["skywind3000/asyncrun.vim"] = {
 
 tools["sindrets/diffview.nvim"] = {
   opt = true,
-  after = "neogit",
+  -- after = "neogit",
   cmd = { "DiffviewOpen", "DiffviewClose" },
   requires = "nvim-lua/plenary.nvim",
   config = function()
@@ -49,10 +57,8 @@ tools["sindrets/diffview.nvim"] = {
   end,
 }
 
--- tools["nvim-telescope/telescope-project.nvim"] = {
--- 	opt = true,
--- 	after = "telescope-fzf-native.nvim",
--- }
+
+
 -- tools["nvim-telescope/telescope-frecency.nvim"] = {
 -- 	opt = true,
 -- 	after = "telescope-project.nvim",
@@ -77,6 +83,13 @@ tools["folke/trouble.nvim"] = {
   after = "telescope.nvim",
   config = function()
     require("modules.tools.config.trouble")
+  end,
+}
+tools["kevinhwang91/nvim-bqf"] = {
+  opt = true,
+  ft = "qf",
+  config = function()
+    require("modules.tools.config.nvim-bqf")
   end,
 }
 tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }

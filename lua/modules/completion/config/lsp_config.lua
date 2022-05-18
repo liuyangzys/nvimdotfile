@@ -7,12 +7,6 @@ end
 local lspconfig = require("lspconfig")
 local lsp_handler = require("modules.completion.config.lsp_handle")
 
-local function custom_attach(client, buffnr)
-  lsp_handler.on_attach(client, buffnr)
-  require("lsp_signature").on_attach({ use_lspsaga = false, floating_window = false }, buffnr)
-  require("aerial").on_attach(client)
-  require("illuminate").on_attach(client)
-end
 
 lsp_installer.setup({
   ui = {
@@ -26,10 +20,12 @@ lsp_installer.setup({
 
 lsp_handler.setup()
 
+
+-- 遍历所有的 lsp 并进行配置
 local servers = lsp_installer.get_installed_servers()
 for _, server in pairs(servers) do
   local opts = {
-    on_attach = custom_attach,
+    on_attach = lsp_handler.on_attach,
     capabilities = lsp_handler.capabilities,
   }
 

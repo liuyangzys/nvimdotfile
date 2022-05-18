@@ -3,7 +3,7 @@ local editor = {}
 editor["RRethy/vim-illuminate"] = {
   event = "BufRead",
   config = function()
-    vim.g.Illuminate_highlightUnderCursor = 0
+    vim.g.Illuminate_highlightUnderCursor = 1
     vim.g.Illuminate_ftblacklist = {
       "help",
       "dashboard",
@@ -14,7 +14,8 @@ editor["RRethy/vim-illuminate"] = {
       "NvimTree",
       "Outline",
       "toggleterm",
-      "aerial"
+      "aerial",
+      "git"
     }
   end,
 }
@@ -85,7 +86,7 @@ editor["ggandor/lightspeed.nvim"] = {
 }
 editor["karb94/neoscroll.nvim"] = {
   opt = true,
-  event = "WinScrolled",
+  event = "BufReadPost",
   config = function()
     require("modules.editor.config.neoscroll")
   end,
@@ -125,16 +126,16 @@ editor["Shatur/neovim-session-manager"] = {
 -- use 'jk' as Esc
 editor["jdhao/better-escape.vim"] = { opt = true, event = "InsertEnter" }
 
-editor["puremourning/vimspector"] = {
-  opt = true,
-  -- keys = "<F5>",
-  setup = function()
-    vim.g.vimspector_enable_mappings = "VISUAL_STUDIO"
-  end,
-  config = function()
-    require("modules.editor.config.vimspector")
-  end,
-}
+-- editor["puremourning/vimspector"] = {
+--   opt = true,
+--   -- keys = "<F5>",
+--   setup = function()
+--     vim.g.vimspector_enable_mappings = "VISUAL_STUDIO"
+--   end,
+--   config = function()
+--     require("modules.editor.config.vimspector")
+--   end,
+-- }
 
 editor["rcarriga/nvim-dap-ui"] = {
   opt = true,
@@ -160,14 +161,14 @@ editor["theHamsta/nvim-dap-virtual-text"] = {
 }
 
 editor["tpope/vim-fugitive"] = { opt = true, cmd = { "Git", "G" } }
-editor["TimUntersberger/neogit"] = {
-  opt = true,
-  cmd = { "Neogit" },
-  config = function()
-    require("modules.editor.config.neogit")
-  end,
-  requires = { "nvim-lua/plenary.nvim" },
-}
+-- editor["TimUntersberger/neogit"] = {
+--   opt = true,
+--   cmd = { "Neogit" },
+--   config = function()
+--     require("modules.editor.config.neogit")
+--   end,
+--   requires = { "nvim-lua/plenary.nvim" },
+-- }
 editor["famiu/bufdelete.nvim"] = {
   opt = true,
   cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },

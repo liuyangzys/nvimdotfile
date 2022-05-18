@@ -4,7 +4,7 @@ if not neoscroll_ok then
   return
 end
 
-require("neoscroll").setup({
+neoscroll.setup({
   -- All these keys will be mapped to their corresponding default scrolling animation
   mappings = {
     "<C-u>",

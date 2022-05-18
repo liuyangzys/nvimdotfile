@@ -1,5 +1,4 @@
 local M = {}
-
 local _json_schemas = {
   {
     description = "TypeScript compiler configuration file",
@@ -165,33 +164,45 @@ local _json_schemas = {
 }
 
 M["sumneko_lua"] = function(opts)
+  local runtime_path = vim.split(package.path, ";")
+  table.insert(runtime_path, "lua/?.lua")
+  table.insert(runtime_path, "lua/?/init.lua")
   opts.settings = {
     Lua = {
-      diagnostics = { globals = { "vim" } },
-      workspace = {
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = "LuaJIT",
+        -- Setup your lua path
+        path = runtime_path,
       },
-      telemetry = { enable = false },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { "vim" },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
     },
   }
 end
 
 M["clangd"] = function(opts)
-  opts.args = {
+  opts.cmd = {
+    "clangd",
+    "--enable-config",
     "--background-index",
-    "-std=c++20",
-    "--pch-storage=memory",
-    "--clang-tidy",
-    "--suggest-missing-includes",
+    "--pretty",
+    "--clang-tidy"
   }
   opts.capabilities.offsetEncoding = { "utf-16" }
   opts.single_file_support = true
 end
+
 M["jsonls"] = function(opts)
   opts.settings = {
     json = {

@@ -5,4 +5,4 @@ if not status_ok then
 end
 
 -- Call the setup function to change the default behavior
-aerial.setup()
+aerial.setup({})

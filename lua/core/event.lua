@@ -37,10 +37,17 @@ function autocmd.load_autocmds()
 
       -- auto change directory
       -- { "BufEnter", "*", "silent! lcd %:p:h" },
+
+      -- auto place to last edit
       {
         "BufReadPost",
         "*",
         [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif]],
+      },
+      {
+        "BufEnter",
+        "*",
+        [[++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
       },
     },
     wins = {

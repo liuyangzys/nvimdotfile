@@ -3,13 +3,16 @@ local completion = {}
 completion["neovim/nvim-lspconfig"] = {
   opt = true,
   event = "BufReadPre",
+  config = function()
+    require("modules.completion.config.lsp_config")
+  end,
 }
 completion["williamboman/nvim-lsp-installer"] = {
-  opt = true,
-  after = "nvim-lspconfig",
-  config = function()
-    require("modules.completion.config.lsp_installer")
-  end,
+  opt = false,
+  -- after = "nvim-lspconfig",
+  -- config = function()
+  -- require("modules.completion.config.lsp_installer")
+  -- end,
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {
   opt = true,
@@ -47,12 +50,13 @@ completion["ray-x/lsp_signature.nvim"] = { opt = true, after = "nvim-lspconfig" 
 
 completion["hrsh7th/nvim-cmp"] = {
   event = "InsertEnter",
+  after = "nvim-lspconfig",
   requires = {
     { "lukas-reineke/cmp-under-comparator", opt = true },
     { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
     { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
-    { "andersevenrud/cmp-tmux", after = "nvim-cmp" },
+    -- { "andersevenrud/cmp-tmux", after = "nvim-cmp" },
     { "hrsh7th/cmp-path", after = "nvim-cmp" },
     { "f3fora/cmp-spell", after = "nvim-cmp" },
     { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
