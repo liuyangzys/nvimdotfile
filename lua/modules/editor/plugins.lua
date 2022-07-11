@@ -112,7 +112,11 @@ editor["Shatur/neovim-session-manager"] = {
 }
 
 -- use 'jk' as Esc
-editor["jdhao/better-escape.vim"] = { opt = true, event = "InsertEnter" }
+editor["max397574/better-escape.nvim"] = {
+  opt = true,
+  event = "InsertEnter",
+  config = require("modules.editor.config.better-escape").config
+}
 
 -- editor["puremourning/vimspector"] = {
 --   opt = true,
