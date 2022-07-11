@@ -28,10 +28,16 @@ local plug_map = {
   -- Plugin Aerial
   ["n|<A-t>"] = map_cr("AerialToggle! right"):with_noremap():with_silent(),
   -- Plugin Telescope
-  ["n|<Leader>fp"] = map_cu("lua require('telescope').extensions.project.project{display_type = 'full'}"):with_noremap():with_silent(),
-  ["n|<Leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent(),
-  ["n|<Leader>fw"] = map_cu("Telescope live_grep"):with_noremap():with_silent(),
-  ["n|<Leader>fs"] = map_cu("Telescope lsp_workspace_symbols"):with_noremap():with_silent(),
+  ["n|<Leader>fp"] = map_cu("lua require('telescope').extensions.project.project{display_type = 'full'}"):with_noremap()
+      :with_silent(),
+  -- ["n|<Leader>ff"] = map_cu("lua require('modules.tools.config.telescope').my_find_files()"):with_noremap():with_silent(),
+  ["n|<Leader>ff"] = map_cu("lua require('telescope.builtin').find_files()"):
+      with_noremap():with_silent(),
+  -- ["n|<Leader>ff"] = map_cu("Telescope find_files"):with_noremap():with_silent(),
+  ["n|<Leader>fw"] = map_cu("lua require('telescope.builtin').live_grep()"):
+      with_noremap():with_silent(),
+  -- ["n|<Leader>fs"] = map_cu("Telescope lsp_workspace_symbols"):with_noremap():with_silent(),
+  ["n|<Leader>fs"] = map_cu("lua require('telescope.builtin').lsp_workspace_symbols()"):with_noremap():with_silent(),
   -- ["n|<Leader>fb"] = map_cu("Telescope file_browser"):with_noremap():with_silent(),
   -- ["n|<Leader>fg"] = map_cu("Telescope git_files"):with_noremap():with_silent(),
   -- ["n|<Leader>fz"] = map_cu("Telescope zoxide list"):with_noremap():with_silent(),

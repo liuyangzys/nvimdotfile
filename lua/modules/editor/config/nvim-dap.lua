@@ -25,7 +25,7 @@ dap.adapters.cortex_debug = {
 dap.adapters.cppdbg = {
   id = "cppdbg",
   type = "executable",
-  command = global.home .. "/.vscode/extensions/ms-vscode.cpptools-1.10.0-win32-x64/debugAdapters/bin/OpenDebugAD7",
+  command = global.home .. "/.vscode/extensions/ms-vscode.cpptools-1.10.3-win32-x64/debugAdapters/bin/OpenDebugAD7",
   options = { detached = false },
 }
 

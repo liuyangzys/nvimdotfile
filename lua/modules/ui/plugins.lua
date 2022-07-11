@@ -3,6 +3,9 @@ local ui = {}
 ui["kyazdani42/nvim-web-devicons"] = { opt = false }
 -- ui["sainnhe/edge"] = {opt = false, config = conf.edge}
 -- ui["rebelot/kanagawa.nvim"] = {opt = false, config = conf.kanagawa}
+ui["ellisonleao/gruvbox.nvim"] = {
+  opt = false
+}
 ui["folke/tokyonight.nvim"] = {
   opt = false,
   config = function()
@@ -78,14 +81,16 @@ ui["dstein64/nvim-scrollview"] = {
 }
 ui["beauwilliams/focus.nvim"] = {
   opt = true,
-  cmd = { "FocusToggle", "FocusSplitNicely", "FocusSplitCycle" },
-  module = "focus",
+  event = "WinEnter",
   config = function()
-    require("focus").setup()
-  end,
+    require("focus").setup({
+      excluded_filetypes = { "fterm", "term", "toggleterm", "Mundo", "MundoDiff" },
+      signcolumn = false,
+    })
+  end
 }
 ui["mbbill/undotree"] = {
-	opt = true,
-	cmd = "UndotreeToggle",
+  opt = true,
+  cmd = "UndotreeToggle",
 }
 return ui

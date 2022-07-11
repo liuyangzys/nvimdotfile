@@ -1,9 +1,15 @@
-vim.opt.termguicolors = true
-vim.opt.list = true
 require("indent_blankline").setup({
-  char = "│",
-  show_first_indent_level = true,
+  indentLine_enabled = 1,
+  char = "▏",
   filetype_exclude = {
+    "alpha",
+    "help",
+    "terminal",
+    "dashboard",
+    "packer",
+    "lspinfo",
+    "TelescopePrompt",
+    "TelescopeResults",
     "startify",
     "dashboard",
     "dotooagenda",
@@ -13,7 +19,6 @@ require("indent_blankline").setup({
     "packer",
     "vimwiki",
     "markdown",
-    "json",
     "txt",
     "vista",
     "help",
@@ -24,28 +29,10 @@ require("indent_blankline").setup({
     "TelescopePrompt",
     "undotree",
     "flutterToolsOutline",
-    "", -- for all buffers without a file type
+    "lsp-installer",
+    "",
   },
-  buftype_exclude = { "terminal", "nofile" },
+  buftype_exclude = { "terminal" },
   show_trailing_blankline_indent = false,
-  show_current_context = true,
-  context_patterns = {
-    "class",
-    "function",
-    "method",
-    "block",
-    "list_literal",
-    "selector",
-    "^if",
-    "^table",
-    "if_statement",
-    "while",
-    "for",
-    "type",
-    "var",
-    "import",
-  },
-  space_char_blankline = " ",
+  show_first_indent_level = false,
 })
--- because lazy load indent-blankline so need readd this autocmd
-vim.cmd("autocmd CursorMoved * IndentBlanklineRefresh")

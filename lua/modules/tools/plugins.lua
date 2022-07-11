@@ -9,9 +9,7 @@ tools["nvim-telescope/telescope.nvim"] = {
   module = "telescope",
   cmd = "Telescope",
   after = "alpha-nvim",
-  config = function()
-    require("modules.tools.config.telescope")
-  end,
+  config = require("modules.tools.config.telescope").config,
   requires = {
     { "nvim-lua/plenary.nvim", opt = false },
   },
@@ -20,26 +18,20 @@ tools["nvim-telescope/telescope.nvim"] = {
 tools["nvim-telescope/telescope-project.nvim"] = {
   opt = true,
   after = "telescope.nvim",
-  config = function()
-    require("modules.tools.config.telescope-project")
-  end,
+  config = require("modules.tools.config.telescope").extension_project_config,
 }
 
 tools["nvim-telescope/telescope-ui-select.nvim"] = {
   opt = true,
   after = "telescope.nvim",
-  config = function()
-    require("modules.tools.config.telescope-ui-select")
-  end,
+  config = require("modules.tools.config.telescope").extension_ui_select_config,
 }
 
 tools["nvim-telescope/telescope-fzf-native.nvim"] = {
   opt = true,
   run = "make",
   after = "telescope.nvim",
-  config = function()
-    require("modules.tools.config.telescope-fzf-native")
-  end,
+  config = require("modules.tools.config.telescope").extension_fzf_config,
 }
 
 tools["skywind3000/asyncrun.vim"] = {
@@ -49,8 +41,8 @@ tools["skywind3000/asyncrun.vim"] = {
 
 tools["sindrets/diffview.nvim"] = {
   opt = true,
-  -- after = "neogit",
   cmd = { "DiffviewOpen", "DiffviewClose" },
+  event = "BufRead",
   requires = "nvim-lua/plenary.nvim",
   config = function()
     require("modules.tools.config.diffview")
@@ -81,17 +73,13 @@ tools["folke/trouble.nvim"] = {
   opt = true,
   cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
   after = "telescope.nvim",
-  config = function()
-    require("modules.tools.config.trouble")
-  end,
+  config = require("modules.tools.config.trouble").config,
 }
-tools["kevinhwang91/nvim-bqf"] = {
-  opt = true,
-  ft = "qf",
-  config = function()
-    require("modules.tools.config.nvim-bqf")
-  end,
-}
+-- tools["kevinhwang91/nvim-bqf"] = {
+--   opt = true,
+--   ft = "qf",
+--   config = require("modules.tools.config.nvim-bqf").config
+-- }
 tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
 
 -- tools["gelguy/wilder.nvim"] = {
@@ -102,9 +90,7 @@ tools["dstein64/vim-startuptime"] = { opt = true, cmd = "StartupTime" }
 
 tools["nathom/filetype.nvim"] = {
   opt = false,
-  config = function()
-    require("modules.tools.config.filetype")
-  end,
+  config = require("modules.tools.config.filetype").config;
 }
 
 return tools

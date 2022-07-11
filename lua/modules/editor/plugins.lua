@@ -22,27 +22,23 @@ editor["RRethy/vim-illuminate"] = {
 editor["numToStr/Comment.nvim"] = {
   opt = true,
   event = { "BufReadPre", "BufNewFile" },
-  config = function()
-    require("modules.editor.config.Comment")
-  end,
+  config = require("modules.editor.config.Comment").config
 }
 
 editor["nvim-treesitter/nvim-treesitter"] = {
   opt = true,
   run = ":TSUpdate",
   event = "BufRead",
-  config = function()
-    require("modules.editor.config.nvim-treesitter")
-  end,
+  config = require("modules.editor.config.nvim-treesitter").config
 }
 editor["nvim-treesitter/nvim-treesitter-textobjects"] = {
   opt = true,
   after = "nvim-treesitter",
 }
-editor["romgrk/nvim-treesitter-context"] = {
-  opt = true,
-  after = "nvim-treesitter",
-}
+-- editor["romgrk/nvim-treesitter-context"] = {
+--   opt = true,
+--   after = "nvim-treesitter",
+-- }
 editor["p00f/nvim-ts-rainbow"] = {
   opt = true,
   after = "nvim-treesitter",
@@ -59,9 +55,7 @@ editor["mfussenegger/nvim-ts-hint-textobject"] = {
 editor["SmiteshP/nvim-gps"] = {
   opt = true,
   after = "nvim-treesitter",
-  config = function()
-    require("modules.editor.config.nvim-gps")
-  end,
+  config = require("modules.editor.config.nvim-gps").config
 }
 editor["windwp/nvim-ts-autotag"] = {
   opt = true,
@@ -82,22 +76,18 @@ editor["rhysd/accelerated-jk"] = { opt = false }
 
 editor["ggandor/lightspeed.nvim"] = {
   opt = true,
-  event = "BufReadPost",
+  event = "BufRead",
 }
 editor["karb94/neoscroll.nvim"] = {
   opt = true,
   event = "BufReadPost",
-  config = function()
-    require("modules.editor.config.neoscroll")
-  end,
+  config = require("modules.editor.config.neoscroll").config
 }
 -- editor["vimlab/split-term.vim"] = { opt = true, cmd = { "Term", "VTerm" } }
 editor["akinsho/nvim-toggleterm.lua"] = {
   opt = true,
   event = "BufRead",
-  config = function()
-    require("modules.editor.config.nvim-toggleterm")
-  end,
+  config = require("modules.editor.config.nvim-toggleterm").config
 }
 -- editor["numtostr/FTerm.nvim"] = {
 -- 	opt = true,
@@ -110,7 +100,7 @@ editor["norcalli/nvim-colorizer.lua"] = {
   opt = true,
   event = "BufRead",
   config = function()
-    require("modules.editor.config.nvim-colorizer")
+    require("colorizer").setup()
   end,
 }
 
@@ -118,9 +108,7 @@ editor["Shatur/neovim-session-manager"] = {
   opt = true,
   cmd = { "SessionManager" },
   after = "telescope.nvim",
-  config = function()
-    require("modules.editor.config.neovim-session-manager")
-  end,
+  config = require("modules.editor.config.neovim-session-manager").config
 }
 
 -- use 'jk' as Esc
@@ -160,15 +148,33 @@ editor["theHamsta/nvim-dap-virtual-text"] = {
   end
 }
 
-editor["tpope/vim-fugitive"] = { opt = true, cmd = { "Git", "G" } }
--- editor["TimUntersberger/neogit"] = {
---   opt = true,
---   cmd = { "Neogit" },
---   config = function()
---     require("modules.editor.config.neogit")
---   end,
---   requires = { "nvim-lua/plenary.nvim" },
--- }
+editor["tpope/vim-fugitive"] = {
+  opt = true,
+  cmd = {
+    "G",
+    "Git",
+    "Gdiffsplit",
+    "Gread",
+    "Gwrite",
+    "Ggrep",
+    "GMove",
+    "GDelete",
+    "GBrowse",
+    "GRemove",
+    "GRename",
+    "Glgrep",
+    "Gedit"
+  },
+  ft = { "fugitive" }
+}
+
+editor["TimUntersberger/neogit"] = {
+  opt = true,
+  cmd = { "Neogit" },
+  config = require("modules.editor.config.neogit").config,
+  requires = { "nvim-lua/plenary.nvim" },
+}
+
 editor["famiu/bufdelete.nvim"] = {
   opt = true,
   cmd = { "Bdelete", "Bwipeout", "Bdelete!", "Bwipeout!" },
@@ -185,9 +191,7 @@ editor["abecodes/tabout.nvim"] = {
   event = "InsertEnter",
   wants = "nvim-treesitter",
   after = "nvim-cmp",
-  config = function()
-    require("modules.editor.config.tabout")
-  end,
+  config = require("modules.editor.config.tabout").config
 }
 
 return editor

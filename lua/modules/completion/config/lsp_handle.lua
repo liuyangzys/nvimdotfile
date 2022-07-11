@@ -56,7 +56,14 @@ M.on_attach = function(client, bufnr)
   -- lsp_highlight_document(client)
 
   require("lsp_signature").on_attach(
-    { use_lspsaga = false, floating_window = false },
+    {
+      bind = true,
+      use_lspsaga = false,
+      floating_window = true,
+      handler_opts = {
+        border = "none"
+      }
+    },
     bufnr)
   require("aerial").on_attach(client)
   require("illuminate").on_attach(client)

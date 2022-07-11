@@ -3,39 +3,21 @@ local completion = {}
 completion["neovim/nvim-lspconfig"] = {
   opt = true,
   event = "BufReadPre",
-  config = function()
-    require("modules.completion.config.lsp_config")
-  end,
+  config = require("modules.completion.config.lsp_config").config
 }
 completion["williamboman/nvim-lsp-installer"] = {
   opt = false,
-  -- after = "nvim-lspconfig",
-  -- config = function()
-  -- require("modules.completion.config.lsp_installer")
-  -- end,
 }
 completion["jose-elias-alvarez/null-ls.nvim"] = {
   opt = true,
   after = "nvim-lspconfig",
-  config = function()
-    require("modules.completion.config.null-ls")
-  end,
+  config = require("modules.completion.config.null-ls").config,
 }
-
--- completion["tami5/lspsaga.nvim"] = {
--- 	opt = true,
--- 	after = "nvim-lspconfig",
--- 	config = function()
--- 		require("modules.completion.config.lsp_saga")
--- 	end,
--- }
 
 completion["stevearc/aerial.nvim"] = {
   opt = true,
   after = "nvim-lspconfig",
-  config = function()
-    require("modules.completion.config.aerial")
-  end,
+  config = require("modules.completion.config.aerial").config
 }
 
 -- completion["kosayoda/nvim-lightbulb"] = {
@@ -56,7 +38,6 @@ completion["hrsh7th/nvim-cmp"] = {
     { "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
     { "hrsh7th/cmp-nvim-lua", after = "nvim-cmp" },
-    -- { "andersevenrud/cmp-tmux", after = "nvim-cmp" },
     { "hrsh7th/cmp-path", after = "nvim-cmp" },
     { "f3fora/cmp-spell", after = "nvim-cmp" },
     { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
@@ -69,33 +50,25 @@ completion["hrsh7th/nvim-cmp"] = {
     --     config = conf.tabnine
     -- }
   },
-  config = function()
-    require("modules.completion.config.nvim-cmp")
-  end,
+  config = require("modules.completion.config.nvim-cmp").config
 }
 
 completion["L3MON4D3/LuaSnip"] = {
   opt = true,
   after = { "nvim-cmp" },
   requires = { "rafamadriz/friendly-snippets", opt = true },
-  config = function()
-    require("modules.completion.config.luasnip")
-  end,
+  config = require("modules.completion.config.luasnip").config,
 }
 
 completion["danymat/neogen"] = {
   opt = true,
   cmd = "Neogen",
-  config = function()
-    require("modules.completion.config.neogen")
-  end,
+  config = require("modules.completion.config.neogen").config
 }
 
 completion["windwp/nvim-autopairs"] = {
   event = "InsertEnter",
-  config = function()
-    require("modules.completion.config.nvim-autopairs")
-  end,
+  config = require("modules.completion.config.nvim-autopairs").config
 }
 
 -- completion["github/copilot.vim"] = { opt = true, cmd = "Copilot" }
